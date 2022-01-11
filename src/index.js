@@ -1,17 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import List from "./components/list.js";
+import Input from "./components/input.js";
+import Sort from "./components/sort.js";
+class Root extends React.Component {
+  render() {
+    return (
+      <>
+        <div class="app-container">
+          <h3 class="header">
+            <span class="header__title">My Todos</span>
+          </h3>
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+          <div class="todo-container">
+            <Input />
+            <Sort />
+            <div class="todo-list-container">
+              <div class="todo-item-container">
+                <span class="todo-item-toggle">
+                  <img src="assets/complete-tick.svg" alt="tick" />
+                </span>
+                <div class="todo-item-content completed">Ăn bánh mì</div>
+                <div class="todo-item-options">
+                  <span class="icon-btn">
+                    <img src="assets/edit.svg" alt="edit" />
+                  </span>
+                  <span class="icon-btn">
+                    <img src="assets/delete.svg" alt="close" />
+                  </span>
+                </div>
+              </div>
+              <List name="Uống một tách trà nóng" />
+              <List name="Đến Academy học lập trình" />
+              <List name="Ăn trưa cùng crush" />
+              <List name="Thực hành lập trình" />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Root />, document.querySelector("#root"));
